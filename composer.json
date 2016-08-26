@@ -9,7 +9,9 @@
         "laravel/framework": "5.2.*",
         "barryvdh/laravel-debugbar": "^2.2",
         "barryvdh/laravel-ide-helper": "^2.2",
-        "mews/captcha": "^2.1"
+        "mews/captcha": "^2.1",
+        "zizaco/entrust": "5.2.x-dev",
+        "predis/predis": "1.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

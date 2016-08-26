@@ -149,9 +149,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Mews\Captcha\CaptchaServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -165,6 +162,16 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+        * 自己添加的扩展包
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        // 验证码
+        Mews\Captcha\CaptchaServiceProvider::class,
+        // 权限
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
     ],
 
@@ -212,7 +219,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        // 验证码
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        // 权限
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];
