@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Role;
-
+    
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -52,4 +52,5 @@ class UsersTableSeeder extends Seeder
             $user->attachRole($createMenuRole);
         });
     }
+    
 }

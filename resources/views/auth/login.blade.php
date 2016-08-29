@@ -16,7 +16,7 @@
         </div>
 
         <div>
-          <input type="password" class="form-control {{ $errors->has('password') ? ' parsley-error' : '' }}" placeholder="password" required="" name="password" />
+          <input type="password" class="form-control {{ $errors->has('password') ? ' parsley-error' : '' }}" placeholder="password" required="" name="password" value="{{old('password')}}" />
           @if ($errors->has('password'))
           <p class="text-danger text-left"><strong>{{ $errors->first('password') }}</strong></p>
           @endif
