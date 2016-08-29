@@ -16,10 +16,12 @@ Route::get('/', function () {
 });
 
 Route::auth();
-Route::get('/home', 'HomeController@index');
 
-// 定义后台路由组
- Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth']], function ($router) {
-     // 首页路由
-     require (__DIR__ . '/Router/Admin/HomeRouter.php');
- });
+Route::get('/home', ['middleware' => ['auth'], 'uses' => 'HomeController@index']);
+
+Route::group(['namespace' => 'Admin','prefix' => 'admin' ,'middleware' => ['auth']],function($router){
+    // 首页路由
+    require( __DIR__ . '/Routes/HomeRoute.php' );
+    // 菜单路由
+    require( __DIR__ . '/Routes/MenuRoute.php' );
+});

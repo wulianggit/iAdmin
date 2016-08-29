@@ -41,7 +41,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The Router does not support the following options: "option_foo", "option_bar"
+     * @expectedExceptionMessage The Routes does not support the following options: "option_foo", "option_bar"
      */
     public function testSetOptionsWithUnsupportedOptions()
     {
@@ -62,7 +62,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The Router does not support the "option_foo" option
+     * @expectedExceptionMessage The Routes does not support the "option_foo" option
      */
     public function testSetOptionWithUnsupportedOption()
     {
@@ -71,7 +71,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The Router does not support the "option_foo" option
+     * @expectedExceptionMessage The Routes does not support the "option_foo" option
      */
     public function testGetOptionWithUnsupportedOption()
     {

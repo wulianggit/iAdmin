@@ -100,7 +100,7 @@ class Router implements RegistrarContract
     public static $verbs = ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
 
     /**
-     * Create a new Router instance.
+     * Create a new Routes instance.
      *
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events
      * @param  \Illuminate\Container\Container  $container

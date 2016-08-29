@@ -254,7 +254,7 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
     /**
      * Gets the route name.
      *
-     * The _route request attributes is automatically set by the Router Matcher.
+     * The _route request attributes is automatically set by the Routes Matcher.
      *
      * @return string The route
      */

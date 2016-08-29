@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 
 /**
- * The Router class is an example of the integration of all pieces of the
+ * The Routes class is an example of the integration of all pieces of the
  * routing system for easier use.
  *
  * @author Fabien Potencier <fabien@symfony.com>
@@ -142,7 +142,7 @@ class Router implements RouterInterface, RequestMatcherInterface
         }
 
         if ($invalid) {
-            throw new \InvalidArgumentException(sprintf('The Router does not support the following options: "%s".', implode('", "', $invalid)));
+            throw new \InvalidArgumentException(sprintf('The Routes does not support the following options: "%s".', implode('", "', $invalid)));
         }
     }
 
@@ -157,7 +157,7 @@ class Router implements RouterInterface, RequestMatcherInterface
     public function setOption($key, $value)
     {
         if (!array_key_exists($key, $this->options)) {
-            throw new \InvalidArgumentException(sprintf('The Router does not support the "%s" option.', $key));
+            throw new \InvalidArgumentException(sprintf('The Routes does not support the "%s" option.', $key));
         }
 
         $this->options[$key] = $value;
@@ -175,7 +175,7 @@ class Router implements RouterInterface, RequestMatcherInterface
     public function getOption($key)
     {
         if (!array_key_exists($key, $this->options)) {
-            throw new \InvalidArgumentException(sprintf('The Router does not support the "%s" option.', $key));
+            throw new \InvalidArgumentException(sprintf('The Routes does not support the "%s" option.', $key));
         }
 
         return $this->options[$key];
@@ -257,7 +257,7 @@ class Router implements RouterInterface, RequestMatcherInterface
     }
 
     /**
-     * Gets the UrlMatcher instance associated with this Router.
+     * Gets the UrlMatcher instance associated with this Routes.
      *
      * @return UrlMatcherInterface A UrlMatcherInterface instance
      */
@@ -302,7 +302,7 @@ class Router implements RouterInterface, RequestMatcherInterface
     }
 
     /**
-     * Gets the UrlGenerator instance associated with this Router.
+     * Gets the UrlGenerator instance associated with this Routes.
      *
      * @return UrlGeneratorInterface A UrlGeneratorInterface instance
      */
