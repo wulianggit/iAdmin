@@ -12,32 +12,46 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        // 创建用户的权限
-        $createUserPermission = new Permission();
-        $createUserPermission->name = 'admin.user.add';
-        $createUserPermission->display_name = '创建用户';
-        $createUserPermission->description  = '添加用户权限';
-        $createUserPermission->save();
-
-        // 查看用户的权限
-        Permission::create([
-            'name'         => 'admin.user.look',
-            'display_name' => '查看用户',
-            'description'  => '查看用户资料权限'
-        ]);
-
-        // 创建菜单权限
-        Permission::create([
-            'name'         => 'admin.menu.add',
-            'display_name' => '添加菜单',
-            'description'  => '新加后台菜单权限'
-        ]);
-
         // 登录后台权限
         Permission::create([
             'name'         => 'admin.global.login',
             'display_name' => '后台登录',
-            'description'  => '后台登录权限'
+            'description'  => '后台登录'
+        ]);
+
+        // 系统管理
+        Permission::create([
+            'name' => 'admin.system.manager',
+            'display_name' => '系统管理',
+            'description'  => '系统管理'
+        ]);
+
+        // 创建菜单权限
+        Permission::create([
+            'name' => 'admin.menus.add',
+            'display_name' => '添加菜单',
+            'description'  => '天价菜单', 
+        ]);
+
+        // 查看菜单权限
+        Permission::create([
+            'name' => 'admin.menus.list',
+            'display_name' => '菜单列表',
+            'description'  => '菜单列表',
+        ]);
+
+        // 修改菜单权限
+        Permission::create([
+            'name' => 'admin.menus.edit',
+            'display_name' => '修改菜单',
+            'description'  => '修改菜单',
+        ]);
+
+        // 删除菜单权限
+        Permission::create([
+            'name' => 'admin.menus.delete',
+            'display_name' => '删除菜单',
+            'description'  => '删除菜单',
         ]);
     }
 }

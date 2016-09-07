@@ -3906,5 +3906,168 @@
             "predis",
             "redis"
         ]
+    },
+    {
+        "name": "bosnadev/repositories",
+        "version": "0.13",
+        "version_normalized": "0.13.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bosnadev/repository.git",
+            "reference": "3a289a137e27ac6b795852a0d72c509a51b70a26"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/bosnadev/repository/3a289a137e27ac6b795852a0d72c509a51b70a26.zip",
+            "reference": "3a289a137e27ac6b795852a0d72c509a51b70a26",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/console": "^5.2",
+            "illuminate/database": "^5.2",
+            "illuminate/filesystem": "^5.2",
+            "illuminate/support": "^5.2",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "dev-master@dev"
+        },
+        "time": "2016-08-19 13:21:55",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Bosnadev\\": "src/Bosnadev/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Maarten Paauw",
+                "email": "maartenpaauw@gmail.com"
+            },
+            {
+                "name": "Mirza Pasic",
+                "email": "mirza@bosnadev.com"
+            }
+        ],
+        "description": "Laravel Repositories",
+        "homepage": "https://bosnadev.com",
+        "keywords": [
+            "database",
+            "eloquent",
+            "laravel",
+            "repositories",
+            "repository"
+        ]
+    },
+    {
+        "name": "laracasts/flash",
+        "version": "2.0.1",
+        "version_normalized": "2.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laracasts/flash.git",
+            "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/laracasts/flash/03eec812fd6ae948664ff51b4320785f6d15ee5d.zip",
+            "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~5.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "dev-master"
+        },
+        "time": "2016-07-11 20:46:02",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Laracasts\\Flash": "src/"
+            },
+            "files": [
+                "src/Laracasts/Flash/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jeffrey Way",
+                "email": "jeffrey@laracasts.com"
+            }
+        ],
+        "description": "Easy flash notifications"
+    },
+    {
+        "name": "hieu-le/active",
+        "version": "3.3.1",
+        "version_normalized": "3.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/letrunghieu/active.git",
+            "reference": "cf6819c7561af5bf9993400530b827b2594b8549"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/letrunghieu/active/cf6819c7561af5bf9993400530b827b2594b8549.zip",
+            "reference": "cf6819c7561af5bf9993400530b827b2594b8549",
+            "shasum": ""
+        },
+        "require": {
+            "laravel/framework": "^5.0",
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "codeclimate/php-test-reporter": "dev-master",
+            "mockery/mockery": "dev-master",
+            "orchestra/testbench": "^3.1",
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2016-08-25 04:11:07",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "HieuLe\\Active\\": "src/",
+                "HieuLe\\ActiveTest\\": "tests/"
+            },
+            "files": [
+                "src/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Hieu Le",
+                "email": "letrunghieu.cse09@gmail.com",
+                "homepage": "https://www.hieule.info"
+            }
+        ],
+        "description": "The helper class for Laravel (4/5) applications to get active class base on current route",
+        "homepage": "https://www.hieule.info/tag/laravel-active/",
+        "keywords": [
+            "active",
+            "laravel",
+            "routing"
+        ]
     }
 ]

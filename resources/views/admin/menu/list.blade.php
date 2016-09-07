@@ -21,12 +21,15 @@
 
     <div class="clearfix"></div>
 
+    @include('flash::message')
+    @inject('menus', 'App\Repositories\Presenter\MenuPresenter')
+
     <div class="row">
         <!-- left panel -->
         <div class="col-md-6">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Pop Overs <small>Sessions</small></h2>
+                    <h2>菜单列表</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -47,39 +50,9 @@
                 <div class="x_content bs-example-popovers">
                     <div class="dd" id="nestable_list_3">
                         <ol class="dd-list">
-                            <li class="dd-item dd3-item" data-id="13">
-                                <div class="dd-handle dd3-handle"> </div>
-                                <div class="dd3-content">
-                                    Item 13
-                                    <div class="pull-right action-buttons">
-                                        <a href="javascript:;" data-pid="#" class="btn-xs createMenu" data-toggle="tooltip" data-original-title="#"  data-placement="top"><i class="fa fa-plus"></i></a>
-                                        <a href="javascript:;" data-href="#" class="btn-xs editMenu" data-toggle="tooltip" data-original-title="#"  data-placement="top"><i class="fa fa-pencil"></i></a>
-                                        <a href="javascript:;" data-id="##" class="btn-xs destoryMenu" data-original-title="##" data-toggle="tooltip"  data-placement="top"><i class="fa fa-trash"></i><form action="#" method="POST" name="delete_item" style="display:none"><input type="hidden" name="_method" value="delete"><input type="hidden" name="_token" value=""></form></a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="dd-item dd3-item" data-id="14">
-                                <div class="dd-handle dd3-handle"> </div>
-                                <div class="dd3-content"> Item 14 </div>
-                            </li>
-                            <li class="dd-item dd3-item" data-id="15">
-                                <div class="dd-handle dd3-handle"> </div>
-                                <div class="dd3-content"> Item 15 </div>
-                                <ol class="dd-list">
-                                    <li class="dd-item dd3-item" data-id="16">
-                                        <div class="dd-handle dd3-handle"> </div>
-                                        <div class="dd3-content"> Item 16 </div>
-                                    </li>
-                                    <li class="dd-item dd3-item" data-id="17">
-                                        <div class="dd-handle dd3-handle"> </div>
-                                        <div class="dd3-content"> Item 17 </div>
-                                    </li>
-                                    <li class="dd-item dd3-item" data-id="18">
-                                        <div class="dd-handle dd3-handle"> </div>
-                                        <div class="dd3-content"> Item 18 </div>
-                                    </li>
-                                </ol>
-                            </li>
+
+                            {!! $menus->getMenuList($menuList) !!}
+                            
                         </ol>
                     </div>
                 </div>
@@ -87,10 +60,11 @@
         </div>
         <!-- end left panel -->
         <!-- right panel -->
+        @permission(config('admin.permissions.menu.add'))
         <div class="col-md-6">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Form Basic Elements <small>different form elements</small></h2>
+                    <h2>添加菜单 <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -110,36 +84,81 @@
                 </div>
                 <div class="x_content">
                     <br />
-                    <form class="form-horizontal form-label-left">
+                    @if (count($errors) > 0) 
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>  
+                    @endif
+                    <form class="form-horizontal form-label-left" id="menuForm" method="POST" action="{{ url('/admin/menu') }}">
+                        {{csrf_field()}}
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Default Input</label>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">上级菜单</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" placeholder="Default Input">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Custom</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="select2_single form-control" tabindex="-1">
-                                    <option></option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="HI">Hawaii</option>
+                                <select class="select2_single form-control" tabindex="-1" name="parent_id">
+                                    {!! $menus->getMenus($menu) !!}
                                 </select>
                             </div>
                         </div>
-                        <div class="ln_solid"></div>
+
                         <div class="form-group">
-                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                <button type="submit" class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-success">Submit</button>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">菜单名称</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="菜单名称" name="name" value="{{old('name')}}">
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">菜单图标</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="菜单图标" name="icon" value="{{old('icon')}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">菜单链接</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="菜单链接" name="url" value="{{old('url')}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">菜单高亮</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="菜单高亮" name="hightlight_url" value="{{old('hightlight_url')}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">菜单权限</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="菜单权限" name="slug" value="{{old('slug')}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">排序</label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" placeholder="排序" name="sort" value="{{old('sort')}}">
+                            </div>
+                        </div>
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                <button type="reset" class="btn btn-default">取消</button>
+                                <button type="submit" class="btn btn-success">确定</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
+        @endpermission
         <!-- end right panel -->
     </div>
 </div>
@@ -150,17 +169,14 @@
 <script src="{{asset('backend/vendors/select2/dist/js/select2.full.min.js')}}"></script>
 <!-- nestable -->
 <script src="{{asset('backend/vendors/jquery-nestable/jquery.nestable.js')}}"></script>
+{{-- layer --}}
+<script src="{{asset('backend/vendors/layer/layer.js')}}"></script>
+
+<script src="{{asset('backend/js/menu/menu-list.js')}}"></script>
 
 <script>
     $(document).ready(function() {
-        // Select2
-        $(".select2_single").select2({
-            placeholder: "Select a state",
-            allowClear: true
-        });
-
-        // nestable
-        $('#nestable_list_3').nestable();
-    });
+        MenuList.init();
+      });
 </script>
 @endsection

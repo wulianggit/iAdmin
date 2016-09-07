@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // 使用基于类的composers...
+        view()->composer(
+            'layouts.sidebar', 'App\Http\ViewComposers\MenuComposer'
+        );
     }
 
     /**
